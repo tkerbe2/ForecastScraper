@@ -1,9 +1,14 @@
+#========================#
+# Libraries and Modules  #
+#========================#
+  
 import PySimpleGUI as sg
 from requests_html import HTMLSession
 
 
-import PySimpleGUI as sg
-
+#===========================================#
+# Creating MN based Cities as buttons in SG #
+#===========================================#
 
 def weatherScrape():
     weatherScrapelayout = [
@@ -28,24 +33,36 @@ def weatherScrape():
         if event == 'Ok':
             if values['stpaul'] == True:
                 sessionStPaul = HTMLSession()
+                #===============================#
+                # Lat and Long for St Paul MN   #
+                #===============================#
                 urlStPaul = 'https://forecast.weather.gov/MapClick.php?lat=44.97902000000005&lon=-93.26493999999997'
                 rStPaul = sessionStPaul.get(urlStPaul)
                 CSSStPaul = rStPaul.html.find('div.row-odd:nth-child(1) > div:nth-child(2)', first=True)
                 sg.popup_ok_cancel("St Paul forecast is: " + CSSStPaul.text,title="Forecast")
             if values['minneapolis'] == True:
                 sessionMinn = HTMLSession()
+                #==================================#
+                # Lat and Long for Minnetonka MN   #
+                #==================================#
                 urlMinn = 'https://forecast.weather.gov/MapClick.php?lat=44.9434&lon=-93.0965'
                 rMinn = sessionMinn.get(urlMinn)
                 CSSMinn = rMinn.html.find('div.row-odd:nth-child(1) > div:nth-child(2)', first=True)
                 sg.popup_ok_cancel("Minneapolis forecast is: " + CSSMinn.text, title="Forecast")
             if values['ep'] == True:
                 sessionEP = HTMLSession()
+                #====================================#
+                # Lat and Long for Eden Prairie MN   #
+                #====================================#
                 urlEP = 'https://forecast.weather.gov/MapClick.php?lat=44.8587&lon=-93.4601'
                 rEP = sessionEP.get(urlEP)
                 CSSEP = rEP.html.find('div.row-odd:nth-child(1) > div:nth-child(2)', first=True)
                 sg.popup_ok_cancel("Eden Prairie forecast is: " + CSSEP.text, title="Forecast")
             if values['av'] == True:
                 sessionAV = HTMLSession()
+                #====================================#
+                # Lat and Long for Apple Valley MN   #
+                #====================================#
                 urlAV = 'https://forecast.weather.gov/MapClick.php?lat=44.7436&lon=-93.2176'
                 rAV = sessionAV.get(urlAV)
                 CSSAV = rAV.html.find('div.row-odd:nth-child(1) > div:nth-child(2)', first=True)
